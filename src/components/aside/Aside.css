@@ -1,0 +1,36 @@
+.logo{
+   width: 80px;
+   height: 80px;
+   margin-bottom: 30px;
+}
+
+.logo img{
+   width: 100%;
+}
+
+/* .menu{
+   height: 100%;
+} */
+
+.menu-item{
+   display: flex;
+   align-items: center;
+   font-size: 28px;
+   line-height: 36px;
+   padding: 12px 25px;
+   color: aliceblue;
+   transition: .2s;
+   cursor: pointer;
+}
+
+.menu-item:hover{
+   background-color: rgb(16, 151, 204)
+}
+
+.menu-item span{
+   padding-left: 15px;
+}
+
+.menu-item:last-child{
+   margin: auto;
+}
