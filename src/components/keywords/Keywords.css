@@ -1,0 +1,25 @@
+.task-item__keywords-title{
+   text-transform: uppercase;
+   font-weight: 500;
+   color: rgb(155, 153, 153);
+   margin-bottom: 5px;
+}
+
+.task-item__keywords{
+   display: flex;
+   flex-wrap: wrap;
+   padding: 0;
+   list-style: none;
+   margin-bottom: 10px;
+}
+
+.task-item__keywords li{
+   font-size: 14px;
+   padding: 2px 8px;
+   font-weight: 700;
+   color: rgb(21, 159, 250);
+   border: 2px solid rgb(21, 159, 250);
+   background-color: rgb(225, 250, 253);
+   margin-right: 8px;
+   border-radius: 5px;
+}
