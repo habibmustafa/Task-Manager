@@ -1,0 +1,49 @@
+.task-state-container{
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   margin-bottom: 20px;
+}
+
+.task-state{
+   color: #fff;
+   font-size: 14px;
+   padding: 4px 8px;
+   border-radius: 8px;
+}
+
+.task-state_default{
+   background-color: rgb(16, 151, 204);
+}
+
+
+.task-state_draft{
+   background-color: rgb(172, 172, 172);
+}
+
+.task-state_completed{
+   background-color: rgb(24, 177, 24);
+}
+
+.task-state__btns{
+   display: flex;
+}
+
+.task-state__btn{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   font-size: 26px;
+   background: transparent;
+   border: none;
+   margin-left: 7px;
+   cursor: pointer;
+}
+
+.task-state__btn-draft{
+   color: #f53f3f;
+}
+
+.task-state__btn-completed{
+   color:rgb(45, 216, 45)
+}
