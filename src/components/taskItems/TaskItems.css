@@ -1,0 +1,6 @@
+.task-items{
+   padding: 0 65px 0 50px;
+   display: flex;
+   flex-wrap: wrap;
+   gap: 25px;
+}
