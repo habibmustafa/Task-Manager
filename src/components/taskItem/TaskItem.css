@@ -1,0 +1,28 @@
+.task-item{
+   flex-basis: 23%;
+   background-color: #fff;
+   padding: 25px 20px;
+   border-radius: 10px;
+   box-shadow: rgba(204, 203, 203, 0.15) 0px 1px 6px 0px;
+}
+
+.task-item__title{
+   font-size: 24px;
+   line-height: 32px;
+   font-weight: 700;
+   margin-bottom: 5px;
+}
+
+.task-item__date{
+   font-size: 14px;
+   line-height: 20px;
+   color: gray;
+   font-weight: 500;
+   margin-bottom: 15px;
+}
+
+.task-item__desc{
+   line-height: 150%;
+   letter-spacing: 0.4px;
+   margin-bottom: 20px;
+}
