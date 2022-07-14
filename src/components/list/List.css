@@ -1,0 +1,19 @@
+
+.task-item__list-title{
+   text-transform: uppercase;
+   font-weight: 500;
+   color: rgb(155, 153, 153);
+   margin-bottom: 5px;
+}
+
+.task-item__list{
+   padding: 0;
+   list-style: none;
+   margin-bottom: 10px;
+}
+
+.task-item__list li {
+   font-size: 14px;
+   line-height: 20px;
+   font-weight: 600;
+}
