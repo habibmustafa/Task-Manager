@@ -1,0 +1,90 @@
+.create-task{
+   position: relative;
+   padding: 30px 25px;
+   width: 25%;
+   background-color: #fff;
+   border-radius: 10px;
+}
+
+.create-task label, .create-task input{
+   display: block;
+}
+
+.create-task__close{
+   position: absolute;
+   top: -50px;
+   right: -50px;
+   padding: 6px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   font-size: 24px;
+   border: none;
+   border-radius: 50%;
+   cursor: pointer;
+   background: transparent;
+}
+
+.add-task, .add-keywords{
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+}
+
+.task-label{
+   font-size: 18px;
+   line-height: 20px;
+   font-weight: 600;
+   margin-bottom: 5px;
+}
+
+.create-task div{
+   margin-bottom: 15px;
+}
+
+.create-task div:last-of-type{
+   margin-bottom: 30px;
+}
+
+.create-task__inp{
+   font-size: 18px;
+   width: 100%;
+   padding: 7px 10px;
+   outline: none;
+   border: 1px solid rgb(202, 195, 195);
+   border-radius: 8px;
+   resize: none;
+}
+
+.create-new__item{
+   width: 8%;
+   font-size: 26px;
+   line-height: 32px;
+   background: rgb(240, 241, 235);
+   border: none;
+   border-radius: 8px;
+   cursor: pointer;
+   margin-left: 8px;
+}
+
+.submit-task{
+ background-image: linear-gradient(-180deg, #37AEE2 0%, #1E96C8 100%);
+ border-radius: .5rem;
+ box-sizing: border-box;
+ color: #FFFFFF;
+ display: flex;
+ font-size: 16px;
+ justify-content: center;
+ padding: 1rem 1.75rem;
+ text-decoration: none;
+ width: 100%;
+ border: 0;
+ cursor: pointer;
+ user-select: none;
+ -webkit-user-select: none;
+ touch-action: manipulation;
+}
+
+.submit-task:hover {
+ background-image: linear-gradient(-180deg, #1D95C9 0%, #17759C 100%);
+}
