@@ -7,8 +7,17 @@ import TaskItems from "./components/taskItems/TaskItems";
 import CreateTask from "./components/createTask/CreateTask";
 
 class App extends Component {
+
+  constructor(props){
+    super(props);
+    if(!localStorage.tasks) {
+      localStorage.setItem('tasks', JSON.stringify([]))
+    }
+  }
+
+  
   state = {
-    isPopupOpen: true,
+    isPopupOpen: false,
   };
 
   togglePopup = () => {
