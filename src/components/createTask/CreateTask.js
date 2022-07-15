@@ -1,35 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import "./CreateTask.css";
 import { GrClose } from "react-icons/gr";
 
 const CreateTask = (props) => {
-  // function onListAdd() {
-  //   const temp = [...list];
-  //   temp.push(
-  //     <div key={temp.length + 1} className="add-task">
-  //       <input type="text" className="create-task__inp" />
-  //       <button className="create-new__item" type="button" onClick={onListAdd}>
-  //         +
-  //       </button>
-  //     </div>
-  //   );
-  //   setList([...temp])
-  // };
+  const [title, setTitle] = useState("");
+  const [desc, setDesc] = useState("");
+  const [list, setList] = useState([""]);
+  const [keyword, setKeyword] = useState([""]);
 
-  // const [list, setList] = useState([
-  //   <div key={1} className="add-task">
-  //     <input type="text" className="create-task__inp" />
-  //     <button className="create-new__item" type="button" onClick={onListAdd}>
-  //       +
-  //     </button>
-  //   </div>,
-  // ]);
+  const listInput = useRef();
 
-  const [list, setList] = useState([1]);
+  const tasks = JSON.parse(localStorage.tasks)
 
   const addTask = () => {
     const temp = [...list];
-    temp.push(list.length + 1);
+    temp.push(listInput.current.value);
     setList(temp);
   };
 
@@ -39,23 +24,48 @@ const CreateTask = (props) => {
     setList(temp);
   };
 
+  const onTitleChange = (value) => {
+    setTitle(value)
+  }
+
+  const onDescChange = (value) => {
+    setDesc(value)
+  }
+
   const closePopup = () => {
     props.closePopup();
   };
 
+  const onFormSubmit = (e) => {
+    e.preventDefault();
+    tasks.push({
+      state: "planning",
+      date: new Date(),
+      title,
+      desc,
+      list,
+      keyword
+    })
+    localStorage.setItem("tasks", JSON.stringify(tasks))
+    closePopup();
+  }
+
   return (
-    <form className="create-task">
+    <form onSubmit={(e) => onFormSubmit(e)} className="create-task">
       <div>
         <label htmlFor="task-title" className="task-label">
           Title:
         </label>
-        <input type="text" id="task-title" className="create-task__inp" />
+        <input onChange={(e) => onTitleChange(e.target.value)} value={title} type="text" id="task-title" className="create-task__inp" required={true}/>
       </div>
       <div>
         <label htmlFor="task-desc" className="task-label">
           Description:
         </label>
         <textarea
+          required={true}
+          onChange={(e) => onDescChange(e.target.value)}
+          value={desc}
           rows={4}
           type="text"
           id="task-desc"
@@ -66,6 +76,7 @@ const CreateTask = (props) => {
       {list.map((item, i) => (
         <div key={item} className="add-task">
           <input
+            ref={listInput}
             type="text"
             className="create-task__inp"
             readOnly={i !== list.length - 1}
@@ -96,7 +107,7 @@ const CreateTask = (props) => {
           +
         </button>
       </div>
-      <button className="submit-task" type="button">
+      <button className="submit-task">
         Submit Task
       </button>
       <button onClick={closePopup} className="create-task__close" type="button">
