@@ -5,13 +5,15 @@ import "./TaskState.css";
 
 export default class TaskState extends Component {
   state = {
-    taskState: "",
+    taskState: this.props.state,
   };
 
   toDraft = () => {
     this.setState({
       taskState: "draft",
     });
+
+    
   };
 
   toCompleted = () => {
@@ -19,6 +21,8 @@ export default class TaskState extends Component {
       taskState: "completed",
     });
   };
+
+
 
   render() {
     const { taskState } = this.state;

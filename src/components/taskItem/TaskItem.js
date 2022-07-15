@@ -8,11 +8,11 @@ export default class TaskItem extends Component {
   render() {
     return (
       <div className='task-item'>
-        <TaskState />
-        <h3 className="task-item__title">Task Title</h3>
-        <p className="task-item__date">10/02/2022</p>
-        <p className="task-item__desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque, nisi ad? Sint quam quis debitis!</p>
-        <List />
+        <TaskState data={this.props.state}/>
+        <h3 className="task-item__title">{this.props.title}</h3>
+        <p className="task-item__date">{this.props.date}</p>
+        <p className="task-item__desc">{this.props.desc}</p>
+        <List data={this.props.list}/>
         <Keywords />
       </div>
     )
