@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import "./CreateTask.css";
 import { GrClose } from "react-icons/gr";
 
@@ -7,14 +7,14 @@ const CreateTask = (props) => {
   const [desc, setDesc] = useState("");
   const [list, setList] = useState([""]);
   const [keyword, setKeyword] = useState([""]);
+  const [listInput, setListInput] = useState("");
+  // const listInput = useRef();
 
-  const listInput = useRef();
-
-  const tasks = JSON.parse(localStorage.tasks)
+  const tasks = JSON.parse(localStorage.tasks);
 
   const addTask = () => {
     const temp = [...list];
-    temp.push(listInput.current.value);
+    temp.push(listInput);
     setList(temp);
   };
 
@@ -25,12 +25,12 @@ const CreateTask = (props) => {
   };
 
   const onTitleChange = (value) => {
-    setTitle(value)
-  }
+    setTitle(value);
+  };
 
   const onDescChange = (value) => {
-    setDesc(value)
-  }
+    setDesc(value);
+  };
 
   const closePopup = () => {
     props.closePopup();
@@ -38,17 +38,46 @@ const CreateTask = (props) => {
 
   const onFormSubmit = (e) => {
     e.preventDefault();
+    const temp = [...list, listInput];
+    const date = new Date();
+    const monthNames = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ];
+
+    function formatAMPM(date) {
+      var hours = date.getHours();
+      var minutes = date.getMinutes();
+      var ampm = hours >= 12 ? 'PM' : 'AM';
+      hours = hours % 12;
+      hours = hours ? hours : 12; // the hour '0' should be '12'
+      minutes = minutes < 10 ? '0'+minutes : minutes;
+      var strTime = hours + ':' + minutes + ' ' + ampm;
+      return strTime;
+    }
+
     tasks.push({
       state: "planning",
-      date: new Date(),
+      date: `${monthNames[date.getMonth()]} ${date.getDate()},  ${date.getFullYear()} ${formatAMPM(date)}`,
       title,
       desc,
-      list,
-      keyword
-    })
-    localStorage.setItem("tasks", JSON.stringify(tasks))
+      list: temp.slice(1),
+      keyword,
+    });
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+
     closePopup();
-  }
+  };
 
   return (
     <form onSubmit={(e) => onFormSubmit(e)} className="create-task">
@@ -56,7 +85,14 @@ const CreateTask = (props) => {
         <label htmlFor="task-title" className="task-label">
           Title:
         </label>
-        <input onChange={(e) => onTitleChange(e.target.value)} value={title} type="text" id="task-title" className="create-task__inp" required={true}/>
+        <input
+          onChange={(e) => onTitleChange(e.target.value)}
+          value={title}
+          type="text"
+          id="task-title"
+          className="create-task__inp"
+          required={true}
+        />
       </div>
       <div>
         <label htmlFor="task-desc" className="task-label">
@@ -75,12 +111,15 @@ const CreateTask = (props) => {
       <h5 className="task-item__list-title">List</h5>
       {list.map((item, i) => (
         <div key={item} className="add-task">
+
           <input
-            ref={listInput}
+            // ref={listInput}
+            onChange={(e) => {setListInput(e.target.value)}}
             type="text"
             className="create-task__inp"
             readOnly={i !== list.length - 1}
           />
+
           {i === list.length - 1 ? (
             <button
               className="create-new__item"
@@ -107,9 +146,7 @@ const CreateTask = (props) => {
           +
         </button>
       </div>
-      <button className="submit-task">
-        Submit Task
-      </button>
+      <button className="submit-task">Submit Task</button>
       <button onClick={closePopup} className="create-task__close" type="button">
         <GrClose />
       </button>
