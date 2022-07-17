@@ -4,28 +4,16 @@ import { CgCloseO } from "react-icons/cg";
 import "./TaskState.css";
 
 export default class TaskState extends Component {
-  state = {
-    taskState: this.props.state,
-  };
-
   toDraft = () => {
-    this.setState({
-      taskState: "draft",
-    });
-
-    
+    this.props.toDraft();
   };
 
   toCompleted = () => {
-    this.setState({
-      taskState: "completed",
-    });
+    this.props.toCompleted();
   };
 
-
-
   render() {
-    const { taskState } = this.state;
+    const { taskState } = this.props;
 
     return (
       <div className="task-state-container">
