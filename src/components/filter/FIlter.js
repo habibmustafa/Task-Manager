@@ -4,10 +4,11 @@ import {MdWindow} from "react-icons/md"
 import "./Filter.css";
 
 export default class Filter extends Component {
+
   render() {
     return (
       <div className="filter-container">
-        <div className="filter-left">35 Campaigns</div>
+        <div className="filter-left">{JSON.parse(localStorage.tasks).length} Campaigns</div>
         <div className="filter-right">
           <select className="filter-select" name="date">
             <option value="newest">Newest</option>
