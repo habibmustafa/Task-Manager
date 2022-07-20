@@ -6,7 +6,7 @@ const CreateTask = (props) => {
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
   const [list, setList] = useState([""]);
-  const [keyword, setKeyword] = useState([""]);
+  // const [keyword, setKeyword] = useState([""]); 
   const [listInput, setListInput] = useState("");
   // const listInput = useRef();
 
@@ -72,7 +72,7 @@ const CreateTask = (props) => {
       title,
       desc,
       list: temp.slice(1),
-      keyword,
+      // keyword,
     });
     localStorage.setItem("tasks", JSON.stringify(tasks));
 
